@@ -13,6 +13,22 @@ project_root/
 └── .env                  # Secrets
 ```
 
+## 🔒 Permissions & Intents
+To function without "Administrator" rights, the bot (Quartermaster) requires the following:
+
+### Bot Permissions
+*   **Manage Roles**: To assign Guest/Game roles.
+    *   *Note*: The Bot's own role must be **higher** in the server hierarchy than the roles it is assigning on `Server Settings > Roles`.
+*   **View Channels**: To see the Start and Log channels.
+*   **Send Messages**: To post the Start Button and Logs.
+*   **Embed Links**: To send formatted Log Embeds.
+*   **Read Message History**: To check if the "Start Onboarding" button is already posted on startup.
+
+### Privileged Intents (Developer Portal)
+You must enable these toggles in the Discord Developer Portal under **Bot > Privileged Gateway Intents**:
+*   **Server Members Intent**: To read user roles to prevent re-onboarding.
+*   **Message Content Intent**: To read channel history (to find the existing Start button).
+
 ## 🚀 How to Run
 
 1.  **Activate Virtual Environment:**

@@ -48,8 +48,10 @@ async def log_error(error, source=None, bot=None):
         if log_channel:
             try:
                 await log_channel.send(embed=embed) 
-            except:
-                pass 
+            except Exception as e:
+                print(f"FAILED to send log to channel: {e}")
+        else:
+            print(f"Could not find Log Channel ID: {config.JOIN_LOGS_CHANNEL_ID}") 
     
     # 2. DM Developer
     if config.DEVELOPER_ID and bot:

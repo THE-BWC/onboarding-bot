@@ -16,6 +16,8 @@
     - [x] Move error handling to `utils.py` <!-- id: 13 -->
     - [x] Move onboarding logic to `cogs/onboarding.py` <!-- id: 14 -->
     - [x] Update `bot.py` to load extensions <!-- id: 15 -->
+- [ ] Security
+    - [x] Restrict commands (`!`) to Developer only <!-- id: 16 -->
 - [x] Verification
     - [x] Verify bot startup <!-- id: 6 -->
     - [x] Test command flows (mock or dry run if possible) <!-- id: 7 -->

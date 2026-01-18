@@ -20,7 +20,7 @@ DEVELOPER_ID = int(os.getenv("DEVELOPER_ID", 299192199843676171))
 START_CHANNEL_ID = int(os.getenv("START_CHANNEL_ID", 482634171961966613))
 
 # Default to "join-logs" channel ID, can be overridden for dev
-JOIN_LOGS_CHANNEL_ID = int(os.getenv("JOIN_LOGS_CHANNEL_ID", 1462258720389206090))
+JOIN_LOGS_CHANNEL_ID = int(os.getenv("JOIN_LOGS_CHANNEL_ID", 1462542309278224527))
 
 # Guest Role ID
 GUEST_ROLE_ID = int(os.getenv("GUEST_ROLE_ID", 799037907167346768))
@@ -32,9 +32,8 @@ GUEST_ROLE_ID = int(os.getenv("GUEST_ROLE_ID", 799037907167346768))
 #   1. A standard unicode emoji (e.g., "🚀")
 #   2. A custom server emoji ID string (e.g., "<:pepe:123456789123456789>")
 GAME_ROLES = {
-    "Star Citizen": {"role_id": int(os.getenv("ROLE_ID_STAR_CITIZEN", 1462269953838153890)), "emoji": "🚀"},
-    "MWO": {"role_id": int(os.getenv("ROLE_ID_MWO", 1462270059522031726)), "emoji": "🤖"},
-    "Vanguard": {"role_id": int(os.getenv("ROLE_ID_VANGUARD", 1462270144817533017)), "emoji": "🛡️"},
-    # Add new games here
-    # "New Game": {"role_id": 12345, "emoji": "🎮"},
+    "Dune": {"role_id": int(os.getenv("ROLE_ID_DUNE", 1408950061433618573)), "emoji": ":DUNE:1408956336137441350"},
+    "Mechwarrior Online": {"role_id": int(os.getenv("ROLE_ID_MWO", 480372104160608267)), "emoji": ":MWO:844570348677759066"},
+    "Star Citizen": {"role_id": int(os.getenv("ROLE_ID_STAR_CITIZEN", 480372006806618114)), "emoji": ":SC:844564383711494144"},
+    "Vanguard": {"role_id": int(os.getenv("ROLE_ID_VANGUARD", 1437220136799965255)), "emoji": ":Vanguard:1437208008395460668"},
 }

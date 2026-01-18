@@ -13,7 +13,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 # Global Error Handler
 @bot.event
@@ -22,6 +22,9 @@ async def on_error(event, *args, **kwargs):
 
 @bot.event
 async def on_command_error(ctx, error):
+    # SILENTLY ignore CheckFailures (Non-devs) and CommandNotFound (e.g. !help if disabled)
+    if isinstance(error, (commands.CheckFailure, commands.CommandNotFound)):
+        return
     await log_error(error, source=ctx)
 
 @bot.command()
@@ -35,6 +38,12 @@ async def trigger_error(ctx):
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user} (ID: {bot.user.id})')
+
+# Global Check: Only Developer can run commands
+@bot.check
+async def global_dev_check(ctx):
+    # This check applies to ALL commands, including custom ones.
+    return ctx.author.id == DEVELOPER_ID
 
 async def main():
     if not TOKEN:
