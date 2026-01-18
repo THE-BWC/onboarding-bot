@@ -40,6 +40,15 @@ You must enable these toggles in the Discord Developer Portal under **Bot > Priv
     python bot.py
     ```
 
+3.  **Run with Docker:**
+    ```bash
+    # Build the image
+    docker build -t onboarding-bot .
+
+    # Run the container (Mounting .env)
+    docker run -d --name onboarding-bot --env-file .env onboarding-bot
+    ```
+
 ## ⚙️ Configuration
 
 The bot is designed to be easily configurable via `config.py` and `.env`.
