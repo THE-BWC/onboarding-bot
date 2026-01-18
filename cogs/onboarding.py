@@ -188,18 +188,11 @@ class StartView(View):
 
     @discord.ui.button(label="Start Onboarding", style=discord.ButtonStyle.primary, custom_id="start_onboarding_btn", emoji="👋")
     async def start_button(self, interaction: discord.Interaction, button: Button):
-        # 1. Check if user is already onboarded
-        # Gather all relevant role IDs
-        onboarded_role_ids = {config.GUEST_ROLE_ID}
-        for data in config.GAME_ROLES.values():
-            onboarded_role_ids.add(data["role_id"])
-
-        # Check if user has any of these roles
-        user_role_ids = {role.id for role in interaction.user.roles}
-        if not user_role_ids.isdisjoint(onboarded_role_ids):
-            # Intersection found - User has at least one onboarding role
+        # 1. Check if user is already onboarded (Guest Role Only)
+        # We only check for the Guest Role to allow users with pre-assigned game roles to still onboard if needed.
+        if any(role.id == config.GUEST_ROLE_ID for role in interaction.user.roles):
             await interaction.response.send_message(
-                "✅ **You are already onboarded!**\nYou already have access to the server. If you need to change your game, please check the `#roles` channel or ask a Moderator.",
+                "✅ **You are already onboarded!**\nYou already have the Guest role. If you need to change your game, please check the `#roles` channel or ask a Moderator.",
                 ephemeral=True
             )
             return
